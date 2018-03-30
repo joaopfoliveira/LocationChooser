@@ -56,12 +56,12 @@ bot.on('message',(message)=>{
        //var chosenN = chooseMap();
        var n = Math.floor((Math.random()*allLocations.length-1));
        message.channel.sendMessage(allLocations[n]);
-       updateTotalTimesLocalGetChosen(n);
-    }
+       //updateTotalTimesLocalGetChosen(n);
+    }/*
     if(message.content == '!mapstatus'){
         var string = getTotalOccurencesOfLocations;
         message.channel.sendMessage(string);
-    }
+    }*/
     if(message.content == '!tou?'){
         message.channel.sendMessage('sim');
     }
