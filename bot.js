@@ -88,15 +88,19 @@ function getTotalOccurencesOfLocations(){
 bot.on('message',(message)=>{
     if(message.content =='!map'){
        //var chosenN = chooseMap();
-       chooseMap();
+       var n = Math.floor((Math.random()*allLocations.length-1));
+       updateTotalTimesLocalGetChosen(n);
+       message.channel.sendMessage(allLocations[n]);
+       //chooseMap();
 
        //updateTotalTimesLocalGetChosen(n);
     }
     if(message.content == '!mapstatus'){
-        message.channel.sendMessage('TEST' + allLocations[0].totalOcurrences);
-        //getTotalOccurencesOfLocations();
-        //message.channel.sendMessage(string);
-        message.channel.sendMessage('TEST2' + allLocations[1].totalOcurrences);
+        var totalString;
+        for(var i = 0 ; i < allLocations.length;i++){
+            totalString+=(allLocations[i].name + ' - ' + allLocations[i].totalOcurrences + '\n');
+        }
+        message.channel.sendMessage(totalString);
     }
     if(message.content == '!tou?'){
         message.channel.sendMessage('sim');
