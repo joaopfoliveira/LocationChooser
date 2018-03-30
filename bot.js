@@ -39,26 +39,42 @@ bot.on('message', function (user, userID, channelID, message, evt) {
      }
 });
 */
-console.log("Hello world");
+
+//login stuff
 const Discord = require('discord.js');
 const bot = new Discord.Client();
-
 bot.login(process.env.BOT_TOKEN);
 
+//real code
 var allLocations = ['Anarchy Acres', 'Dusty Depot', 'Fatal Fields','Flush Factory','Greasy Grove',
 'Haunted Hills','Junk Junction','Lonely Lodge','Loot Lake','Lucky Landing','Moisty Mire','Pleasant Park',
 'Retail Row','Salty Springs','Shifty Shafts','Snobby Shores','Tilted Towers','Tomato Town','Wailing Woods',
 'Flush 2', 'GUS'];    
-
+var locationsOcurrences;
 bot.on('message',(message)=>{
     if(message.content =='!map'){
-        var n = Math.floor((Math.random()*allLocations.length-1));
-        message.channel.sendMessage(allLocations[n]);
+       var chosenN = chooseMap();
+       updateTotalTimesLocalGetChosen(chosenN);
     }
-    if(message.content =='!noodles'){
-        message.channel.sendMessage('tem sal p crl.');
-    }
-    if(message.content =='ping'){
-        message.channel.sendMessage('pong caralho');
+    if(message.content == '!mapstatus'){
+        message.channel.sendMessage(getTotalOccurencesOfLocations);
     }
 });
+
+function chooseMap() {
+    var n = Math.floor((Math.random()*allLocations.length-1));
+    message.channel.sendMessage(allLocations[n]);
+    return n;
+}
+
+function updateTotalTimesLocalGetChosen(localNumber){
+    locationsOcurrences[localNumber]++;
+}   
+
+function getTotalOccurencesOfLocations(localNumber){
+    var totalString;
+    for(var i = 0 ; i < allLocations.length;i++){
+        totalString+=(allLocations[i] + ' - ' + locationsOcurrences[i] + '\n');
+    }
+    return totalString;
+}
