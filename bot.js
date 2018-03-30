@@ -94,7 +94,7 @@ bot.on('message',(message)=>{
        //chooseMap();
        //updateTotalTimesLocalGetChosen(n);
     }
-    if(message.content == '!mapstatus'){
+    if(message.content == '!mapstats'){
 
         var totalString = '';
         for(var i = 0 ; i < allLocations.length;i++){
