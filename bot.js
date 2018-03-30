@@ -53,11 +53,14 @@ var allLocations = ['Anarchy Acres', 'Dusty Depot', 'Fatal Fields','Flush Factor
 var locationsOcurrences;
 bot.on('message',(message)=>{
     if(message.content =='!map'){
-       var chosenN = chooseMap();
-       updateTotalTimesLocalGetChosen(chosenN);
+       //var chosenN = chooseMap();
+       var n = Math.floor((Math.random()*allLocations.length-1));
+       message.channel.sendMessage(allLocations[n]);
+       updateTotalTimesLocalGetChosen(n);
     }
     if(message.content == '!mapstatus'){
-        message.channel.sendMessage(getTotalOccurencesOfLocations);
+        var string = getTotalOccurencesOfLocations;
+        message.channel.sendMessage(string);
     }
     if(message.content == '!tou?'){
         message.channel.sendMessage('sim');
@@ -74,7 +77,7 @@ function updateTotalTimesLocalGetChosen(localNumber){
     locationsOcurrences[localNumber]++;
 }   
 
-function getTotalOccurencesOfLocations(localNumber){
+function getTotalOccurencesOfLocations(){
     var totalString;
     for(var i = 0 ; i < allLocations.length;i++){
         totalString+=(allLocations[i] + ' - ' + locationsOcurrences[i] + '\n');
