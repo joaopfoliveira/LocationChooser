@@ -47,10 +47,9 @@ bot.login(process.env.BOT_TOKEN);
 
 
 //real code
-function Location(name, id) {
+function Location(name) {
     this.name = name;
     this.totalOcurrences = 0;
-    this.id = id;
 }
 
 var anarchyAcres = new Location('Anarchy Acres',0);
@@ -63,7 +62,7 @@ var allLocationsNames = ['Anarchy Acres', 'Dusty Depot', 'Fatal Fields','Flush F
 'Flush 2', 'GUS'];    
 
 for(var i = 0; i < allLocationsNames.length;i++){
-    allLocations[i] = new Location(allLocationsNames[i],i);
+    allLocations[i] = new Location(allLocationsNames[i]);
 }
 
 
@@ -73,7 +72,7 @@ bot.on('message',(message)=>{
     if(message.content =='!map'){
        //var chosenN = chooseMap();
        var n = Math.floor((Math.random()*allLocations.length-1));
-       message.channel.sendMessage(allLocations[n]);
+       message.channel.sendMessage(allLocations[n].name);
        updateTotalTimesLocalGetChosen(n);
        //updateTotalTimesLocalGetChosen(n);
     }
