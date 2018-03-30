@@ -43,7 +43,7 @@ console.log("Hello world");
 const Discord = require('discord.js');
 const bot = new Discord.Client();
 
-bot.login('NDI5MDMzNDc5Njc4NzIyMDQ4.DZ7wJw.HSZCVWAjh9wOiLBzpAUKedzFxPc');
+bot.login(process.env.BOT_TOKEN);
 
 var allLocations = ['Anarchy Acres', 'Dusty Depot', 'Fatal Fields','Flush Factory','Greasy Grove',
 'Haunted Hills','Junk Junction','Lonely Lodge','Loot Lake','Lucky Landing','Moisty Mire','Pleasant Park',
