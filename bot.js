@@ -76,6 +76,7 @@ function updateTotalTimesLocalGetChosen(localID){
 }   
 
 function getTotalOccurencesOfLocations(){
+    message.channel.sendMessage('TESTEEEEEEEEE');
     var totalString;
     for(var i = 0 ; i < allLocations.length;i++){
         message.channel.sendMessage((allLocations[i].name + ' - ' + allLocations[i].totalOcurrences + '\n'));
