@@ -59,6 +59,9 @@ bot.on('message',(message)=>{
     if(message.content == '!mapstatus'){
         message.channel.sendMessage(getTotalOccurencesOfLocations);
     }
+    if(message.content == '!tou?'){
+        message.channel.sendMessage('sim');
+    }
 });
 
 function chooseMap() {
