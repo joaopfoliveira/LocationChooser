@@ -52,7 +52,7 @@ function Location(name) {
     this.totalOcurrences = 0;
 }
 
-var allLocations;
+var allLocations = [];
 
 var allLocationsNames = ['Anarchy Acres', 'Dusty Depot', 'Fatal Fields','Flush Factory','Greasy Grove',
 'Haunted Hills','Junk Junction','Lonely Lodge','Loot Lake','Lucky Landing','Moisty Mire','Pleasant Park',
@@ -60,7 +60,7 @@ var allLocationsNames = ['Anarchy Acres', 'Dusty Depot', 'Fatal Fields','Flush F
 'Flush 2', 'GUS'];    
 
 for(var i = 0; i < allLocationsNames.length;i++){
-    allLocations.push(new Location(allLocationsNames[i]));
+    allLocations[i] = (new Location(allLocationsNames[i]));
 }
 
 var locationsOcurrences;
