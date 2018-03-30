@@ -1,0 +1,12 @@
+{
+  "name": "LocationChooser",
+  "version": "1.0.0",
+  "description": "Random Location Chooser for Fortnite",
+  "main": "bot.js",
+  "author": "RAMONEEE",
+  "dependencies": {
+    "discord.io": "^2.5.3",
+    "discord.js": "^11.3.2",
+    "winston": "^2.4.1"
+  }
+}
