@@ -45,7 +45,7 @@ const Discord = require('discord.js');
 const bot = new Discord.Client();
 bot.login(process.env.BOT_TOKEN);
 
-
+/*
 //real code
 function Location(name) {
     this.name = name;
@@ -101,3 +101,4 @@ function getTotalOccurencesOfLocations(){
     }
     //return totalString;
 }
+*/
