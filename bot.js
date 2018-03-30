@@ -89,12 +89,13 @@ bot.on('message',(message)=>{
     if(message.content =='!map'){
        //var chosenN = chooseMap();
        var n = Math.floor((Math.random()*allLocations.length-1));
-       message.channel.sendMessage(allLocations[n]);
+       message.channel.sendMessage(allLocations[n].name);
+       updateTotalTimesLocalGetChosen(n);
        //chooseMap();
-
        //updateTotalTimesLocalGetChosen(n);
     }
     if(message.content == '!mapstatus'){
+
         var totalString = '';
         for(var i = 0 ; i < allLocations.length;i++){
             totalString+=(allLocations[i].name + ' - ' + allLocations[i].totalOcurrences + '\n');
