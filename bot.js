@@ -52,8 +52,6 @@ function Location(name) {
     this.totalOcurrences = 0;
 }
 
-var anarchyAcres = new Location('Anarchy Acres',0);
-
 var allLocations;
 
 var allLocationsNames = ['Anarchy Acres', 'Dusty Depot', 'Fatal Fields','Flush Factory','Greasy Grove',
@@ -62,7 +60,7 @@ var allLocationsNames = ['Anarchy Acres', 'Dusty Depot', 'Fatal Fields','Flush F
 'Flush 2', 'GUS'];    
 
 for(var i = 0; i < allLocationsNames.length;i++){
-    allLocations[i] = new Location(allLocationsNames[i]);
+    allLocations.push(new Location(allLocationsNames[i]));
 }
 
 
