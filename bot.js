@@ -45,7 +45,7 @@ const Discord = require('discord.js');
 const bot = new Discord.Client();
 bot.login(process.env.BOT_TOKEN);
 
-/*
+
 //real code
 function Location(name) {
     this.name = name;
@@ -63,25 +63,7 @@ for(var i = 0; i < allLocationsNames.length;i++){
     allLocations.push(new Location(allLocationsNames[i]));
 }
 
-
-
 var locationsOcurrences;
-bot.on('message',(message)=>{
-    if(message.content =='!map'){
-       //var chosenN = chooseMap();
-       var n = Math.floor((Math.random()*allLocations.length-1));
-       message.channel.sendMessage(allLocations[n].name);
-       updateTotalTimesLocalGetChosen(n);
-       //updateTotalTimesLocalGetChosen(n);
-    }
-    if(message.content == '!mapstatus'){
-        getTotalOccurencesOfLocations;
-        //message.channel.sendMessage(string);
-    }
-    if(message.content == '!tou?'){
-        message.channel.sendMessage('sim');
-    }
-});
 
 function chooseMap() {
     var n = Math.floor((Math.random()*allLocations.length-1));
@@ -101,4 +83,22 @@ function getTotalOccurencesOfLocations(){
     }
     //return totalString;
 }
-*/
+
+bot.on('message',(message)=>{
+    if(message.content =='!map'){
+       //var chosenN = chooseMap();
+       var n = Math.floor((Math.random()*allLocationsNames.length-1));
+       message.channel.sendMessage(allLocations[n].name);
+       updateTotalTimesLocalGetChosen(n);
+       //updateTotalTimesLocalGetChosen(n);
+    }
+    if(message.content == '!mapstatus'){
+        getTotalOccurencesOfLocations();
+        //message.channel.sendMessage(string);
+    }
+    if(message.content == '!tou?'){
+        message.channel.sendMessage('sim');
+    }
+});
+
+
