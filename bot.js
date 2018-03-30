@@ -67,8 +67,8 @@ var locationsOcurrences;
 
 function chooseMap() {
     var n = Math.floor((Math.random()*allLocations.length-1));
+    updateTotalTimesLocalGetChosen(n);
     message.channel.sendMessage(allLocations[n]);
-    return n;
 }
 
 function updateTotalTimesLocalGetChosen(localID){
@@ -88,14 +88,15 @@ function getTotalOccurencesOfLocations(){
 bot.on('message',(message)=>{
     if(message.content =='!map'){
        //var chosenN = chooseMap();
-       var n = Math.floor((Math.random()*allLocationsNames.length-1));
-       message.channel.sendMessage(allLocations[n].name);
-       updateTotalTimesLocalGetChosen(n);
+       chooseMap();
+
        //updateTotalTimesLocalGetChosen(n);
     }
     if(message.content == '!mapstatus'){
-        getTotalOccurencesOfLocations();
+        message.channel.sendMessage('TEST' + allLocations[0].totalOcurrences);
+        //getTotalOccurencesOfLocations();
         //message.channel.sendMessage(string);
+        message.channel.sendMessage('TEST2' + allLocations[1].totalOcurrences);
     }
     if(message.content == '!tou?'){
         message.channel.sendMessage('sim');
