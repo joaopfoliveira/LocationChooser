@@ -47,6 +47,7 @@ bot.login(process.env.BOT_TOKEN);
 
 
 //real code
+//INTIALIZE DATA
 function Location(name) {
     this.name = name;
     this.totalOcurrences = 0;
@@ -55,9 +56,9 @@ function Location(name) {
 var allLocations = [];
 
 var allLocationsNames = ['Anarchy Acres', 'Dusty Depot', 'Fatal Fields','Flush Factory','Greasy Grove',
-'Haunted Hills','Junk Junction','Lonely Lodge','Loot Lake','Lucky Landing','Moisty Mire','Pleasant Park',
-'Retail Row','Salty Springs','Shifty Shafts','Snobby Shores','Tilted Towers','Tomato Town','Wailing Woods',
-'Flush 2', 'GUS'];    
+'Haunted Hills','Junk Junction','Lonely Lodge','Lucky Landing','Moisty Mire','Pleasant Park',
+'Retail Row','Salty Springs','Shifty Shafts','Snobby Shores','Tilted Towers','Wailing Woods',
+'Flush 2'];    
 
 for(var i = 0; i < allLocationsNames.length;i++){
     allLocations[i] = (new Location(allLocationsNames[i]));
@@ -65,8 +66,39 @@ for(var i = 0; i < allLocationsNames.length;i++){
 
 var locationsOcurrences;
 
+
+// FUNCTIONS
+
+function randomWithProbability() {
+    var notRandomNumbers = [
+                            allLocationsNames.indexOf('Anarchy Acres'), allLocationsNames.indexOf('Anarchy Acres'),
+                            allLocationsNames.indexOf('Dusty Depot'),
+                            allLocationsNames.indexOf('Fatal Fields'),allLocationsNames.indexOf('Fatal Fields'),
+                            allLocationsNames.indexOf('Flush Factory'),allLocationsNames.indexOf('Flush Factory'),
+                            allLocationsNames.indexOf('Greasy Groove'),
+                            allLocationsNames.indexOf('Haunted Hills'),
+                            allLocationsNames.indexOf('Junk Junction'),
+                            allLocationsNames.indexOf('Lonely Lodge'),
+                            allLocationsNames.indexOf('Lucky Landing'),
+                            allLocationsNames.indexOf('Moisty Mire'),
+                            allLocationsNames.indexOf('Pleasent Park'),allLocationsNames.indexOf('Pleasent Park'),allLocationsNames.indexOf('Pleasent Park'),
+                            allLocationsNames.indexOf('Retail Row'),allLocationsNames.indexOf('Retail Row'),allLocationsNames.indexOf('Retail Row'),
+                            allLocationsNames.indexOf('Salty Springs'),allLocationsNames.indexOf('Salty Springs'),allLocationsNames.indexOf('Salty Springs'),
+                            allLocationsNames.indexOf('Shifty Shafts'),
+                            allLocationsNames.indexOf('Snobby Shores'),allLocationsNames.indexOf('Snobby Shores'),allLocationsNames.indexOf('Snobby Shores'),
+                            allLocationsNames.indexOf('Tilted Towers'),allLocationsNames.indexOf('Tilted Towers'),
+                            allLocationsNames.indexOf('Wailing Woods'),
+                            allLocationsNames.indexOf('Flush 2'),
+                            ];
+
+
+
+    var idx = Math.floor(Math.random() * notRandomNumbers.length);
+    return notRandomNumbers[idx];
+  }
+
 function chooseMap() {
-    var n = Math.floor((Math.random()*allLocations.length-1));
+    var n = randomWithProbability();
     updateTotalTimesLocalGetChosen(n);
     message.channel.sendMessage(allLocations[n]);
 }
@@ -85,6 +117,7 @@ function getTotalOccurencesOfLocations(){
     //return totalString;
 }
 
+//COMMANDS AND ACTIONS:
 bot.on('message',(message)=>{
     if(message.content =='!map'){
        //var chosenN = chooseMap();
