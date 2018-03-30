@@ -45,23 +45,42 @@ const Discord = require('discord.js');
 const bot = new Discord.Client();
 bot.login(process.env.BOT_TOKEN);
 
+
 //real code
-var allLocations = ['Anarchy Acres', 'Dusty Depot', 'Fatal Fields','Flush Factory','Greasy Grove',
+function Location(name, id) {
+    this.name = name;
+    this.totalOcurrences = 0;
+    this.id = id;
+}
+
+var anarchyAcres = new Location('Anarchy Acres',0);
+
+var allLocations;
+
+var allLocationsNames = ['Anarchy Acres', 'Dusty Depot', 'Fatal Fields','Flush Factory','Greasy Grove',
 'Haunted Hills','Junk Junction','Lonely Lodge','Loot Lake','Lucky Landing','Moisty Mire','Pleasant Park',
 'Retail Row','Salty Springs','Shifty Shafts','Snobby Shores','Tilted Towers','Tomato Town','Wailing Woods',
 'Flush 2', 'GUS'];    
+
+for(var i = 0; i < allLocationsNames.length;i++){
+    allLocations[i] = new Location(allLocationsNames[i],i);
+}
+
+
+
 var locationsOcurrences;
 bot.on('message',(message)=>{
     if(message.content =='!map'){
        //var chosenN = chooseMap();
        var n = Math.floor((Math.random()*allLocations.length-1));
        message.channel.sendMessage(allLocations[n]);
+       updateTotalTimesLocalGetChosen(n);
        //updateTotalTimesLocalGetChosen(n);
-    }/*
+    }
     if(message.content == '!mapstatus'){
-        var string = getTotalOccurencesOfLocations;
-        message.channel.sendMessage(string);
-    }*/
+        getTotalOccurencesOfLocations;
+        //message.channel.sendMessage(string);
+    }
     if(message.content == '!tou?'){
         message.channel.sendMessage('sim');
     }
@@ -73,14 +92,15 @@ function chooseMap() {
     return n;
 }
 
-function updateTotalTimesLocalGetChosen(localNumber){
-    locationsOcurrences[localNumber]++;
+function updateTotalTimesLocalGetChosen(localID){
+    allLocations[localID].totalOcurrences++;
 }   
 
 function getTotalOccurencesOfLocations(){
     var totalString;
     for(var i = 0 ; i < allLocations.length;i++){
-        totalString+=(allLocations[i] + ' - ' + locationsOcurrences[i] + '\n');
+        message.channel.sendMessage((allLocations[i].name + ' - ' + allLocations[i].totalOcurrences + '\n'));
+        //totalString+=(allLocations[i].name + ' - ' + allLocations[i].totalOcurrences + '\n');
     }
-    return totalString;
+    //return totalString;
 }
